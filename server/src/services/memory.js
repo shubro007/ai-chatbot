@@ -23,3 +23,4 @@ async function appendMessage(sessionId, role, content) {
 
 module.exports = { getRecentMessages, appendMessage };
 
+

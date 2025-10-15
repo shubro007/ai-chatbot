@@ -1,0 +1,40 @@
+### 3‑minute technical script (with timestamps)
+
+00:00–00:45 — Hook & Problem
+- Imagine first‑tier support that answers instantly, stays on‑brand, and knows when to hand off. Today, long resolution times and repetitive FAQs burn out agents and frustrate customers. Our solution: AI Customer Support Bot (ZenDesk AI). It grounds answers in your FAQ knowledge base, preserves conversational context across turns, and escalates to a human when confidence drops—all behind a clean REST API.
+
+00:45–01:45 — Architecture & RAG Depth
+- Backend Architecture: Node.js + Express REST API. Endpoints:
+  - POST /api/sessions: open a new conversation; returns session id.
+  - POST /api/messages: append user input, generate grounded reply, return { reply, escalated }.
+  - GET /api/faqs: retrieve knowledge base entries.
+  - POST /api/sessions/:id/close: close the conversation.
+- Database: Supabase/Postgres with three core tables:
+  - sessions(id, customer_id, status, summary, metadata, timestamps)
+  - messages(id, session_id, role[user|assistant], content, created_at)
+  - faqs(id, question, answer, updated_at)
+- Session Management & Contextual Memory:
+  - Each turn is persisted in messages by session_id.
+  - For generation, we fetch the recent window of messages (sliding context) to preserve dialogue state.
+  - Every N turns, we auto‑summarize the transcript and store sessions.summary to keep context compact over long chats.
+- LLM Integration Strategy: Retrieval‑Augmented Generation (RAG) over FAQs
+  - Lightweight retrieval: we score user text against the FAQs; if a strong match exists, we answer directly from the canonical FAQ answer.
+  - Otherwise, we build a prompt that includes the top‑K FAQ Q/A snippets plus conversation history and call the LLM (Gemini). This grounds responses in known content and reduces hallucinations.
+  - Prompts are separated into respondSystem (answering behavior) and summarizeSystem (periodic summaries), enabling controllable style and safety.
+
+01:45–02:30 — The Intelligence: Escalation
+- Escalation Logic (two failure criteria):
+  1) Retrieval failure: no FAQ match passes the confidence threshold (e.g., score < 2) AND the LLM signals uncertainty (phrases like “not sure”, “cannot answer”, “escalate”).
+  2) Multi‑turn failure: repeated uncertainty across consecutive turns (e.g., two successive low‑confidence responses or user re‑asks), indicating the model isn’t converging.
+- When triggered, we set escalated=true and append an escalation notice. The LLM simultaneously produces a concise session summary (who, what, attempted resolutions, key entities). That summary is written to sessions.summary to give the human agent instant context, lowering handle time and eliminating re‑asking.
+
+02:30–03:00 — Evaluation & Next Steps
+- Evaluation Focus:
+  - Accuracy: grounded‑answer rate (answers sourced from FAQ), citation coverage, hallucination rate.
+  - Session Management: resolution within M turns, summary quality, context retention after long chats.
+  - Escalation Quality: precision of triggers, human handle time reduction post‑handoff.
+- Next Steps:
+  - Upgrade retrieval to semantic search (vector embeddings) for robust RAG at scale.
+  - Add confidence scoring from the LLM and telemetry for continuous tuning.
+  - Expand admin tools for FAQ curation and prompt versioning.
+- CTA: I’m ready for Q&A to walk through the code structure and prompts, or you can review the repo for full endpoints, schema, and prompt templates.

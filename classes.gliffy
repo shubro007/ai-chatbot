@@ -1,0 +1,200 @@
+{
+  "contentType": "application/gliffy+json",
+  "version": "1.1",
+  "metadata": { "title": "UML Classes", "revision": 1, "exportBorder": false },
+  "stage": {
+    "background": "#FFFFFF",
+    "width": 1000,
+    "height": 600,
+    "padding": 10,
+    "objects": [
+      {
+        "id": 1,
+        "order": 1,
+        "x": 80,
+        "y": 80,
+        "width": 300,
+        "height": 220,
+        "rotation": 0,
+        "lockAspectRatio": false,
+        "constrainProportions": false,
+        "graphic": {
+          "type": "Shape",
+          "shape": "rectangle",
+          "fill": "#FFFFFF",
+          "stroke": "#000000",
+          "strokeWidth": 2
+        },
+        "children": [
+          {
+            "id": 2,
+            "order": 2,
+            "x": 0,
+            "y": 0,
+            "width": 300,
+            "height": 44,
+            "graphic": {
+              "type": "Shape",
+              "shape": "rectangle",
+              "fill": "#F5F5F5",
+              "stroke": "#000000",
+              "strokeWidth": 1
+            },
+            "children": [
+              {
+                "id": 3,
+                "order": 3,
+                "x": 10,
+                "y": 10,
+                "width": 280,
+                "height": 24,
+                "graphic": { "type": "Text", "fontSize": 18, "bold": true, "fontFamily": "Arial", "color": "#000000" },
+                "text": { "rawText": "Person", "halign": "left", "valign": "middle" }
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "order": 4,
+            "x": 0,
+            "y": 44,
+            "width": 300,
+            "height": 88,
+            "graphic": {
+              "type": "Shape",
+              "shape": "rectangle",
+              "fill": "#FFFFFF",
+              "stroke": "#000000",
+              "strokeWidth": 1
+            },
+            "children": [
+              {
+                "id": 5,
+                "order": 5,
+                "x": 10,
+                "y": 10,
+                "width": 280,
+                "height": 68,
+                "graphic": { "type": "Text", "fontSize": 14, "fontFamily": "Courier New", "color": "#000000" },
+                "text": {
+                  "rawText": "- name: String\n- birthDate: Date",
+                  "halign": "left",
+                  "valign": "top"
+                }
+              }
+            ]
+          },
+          {
+            "id": 6,
+            "order": 6,
+            "x": 0,
+            "y": 132,
+            "width": 300,
+            "height": 88,
+            "graphic": {
+              "type": "Shape",
+              "shape": "rectangle",
+              "fill": "#FFFFFF",
+              "stroke": "#000000",
+              "strokeWidth": 1
+            },
+            "children": [
+              {
+                "id": 7,
+                "order": 7,
+                "x": 10,
+                "y": 10,
+                "width": 280,
+                "height": 68,
+                "graphic": { "type": "Text", "fontSize": 14, "fontFamily": "Courier New", "color": "#000000" },
+                "text": {
+                  "rawText": "+ getName(): String\n+ setName(String): void\n+ isBirthday(): boolean",
+                  "halign": "left",
+                  "valign": "top"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "order": 10,
+        "x": 460,
+        "y": 80,
+        "width": 300,
+        "height": 176,
+        "rotation": 0,
+        "lockAspectRatio": false,
+        "constrainProportions": false,
+        "graphic": {
+          "type": "Shape",
+          "shape": "rectangle",
+          "fill": "#FFFFFF",
+          "stroke": "#000000",
+          "strokeWidth": 2
+        },
+        "children": [
+          {
+            "id": 11,
+            "order": 11,
+            "x": 0,
+            "y": 0,
+            "width": 300,
+            "height": 44,
+            "graphic": {
+              "type": "Shape",
+              "shape": "rectangle",
+              "fill": "#F5F5F5",
+              "stroke": "#000000",
+              "strokeWidth": 1
+            },
+            "children": [
+              {
+                "id": 12,
+                "order": 12,
+                "x": 10,
+                "y": 10,
+                "width": 280,
+                "height": 24,
+                "graphic": { "type": "Text", "fontSize": 18, "bold": true, "fontFamily": "Arial", "color": "#000000" },
+                "text": { "rawText": "Address", "halign": "left", "valign": "middle" }
+              }
+            ]
+          },
+          {
+            "id": 13,
+            "order": 13,
+            "x": 0,
+            "y": 44,
+            "width": 300,
+            "height": 132,
+            "graphic": {
+              "type": "Shape",
+              "shape": "rectangle",
+              "fill": "#FFFFFF",
+              "stroke": "#000000",
+              "strokeWidth": 1
+            },
+            "children": [
+              {
+                "id": 14,
+                "order": 14,
+                "x": 10,
+                "y": 10,
+                "width": 280,
+                "height": 112,
+                "graphic": { "type": "Text", "fontSize": 14, "fontFamily": "Courier New", "color": "#000000" },
+                "text": {
+                  "rawText": "- street: String\n- city: String\n- state: String",
+                  "halign": "left",
+                  "valign": "top"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

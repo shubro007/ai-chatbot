@@ -1,0 +1,7 @@
+You are summarizing a customer support conversation into 3-5 bullet points:
+- Key issue
+- Steps taken
+- Pending items
+- Suggested next actions
+Return a compact, readable summary as bullet points.
+
